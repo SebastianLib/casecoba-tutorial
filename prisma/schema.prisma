@@ -8,7 +8,7 @@ datasource db {
 }
 
 enum OrderStatus {
-  fullfilled
+  fulfilled
   shipped
   awaiting_shipment
 }
@@ -64,11 +64,11 @@ model Order {
   id              String        @id @default(cuid())
   configurationId String
   configuration   Configuration @relation(fields: [configurationId], references: [id])
-  user            User          @relation(fields: [userId], references: [id])
+  user            User         @relation(fields: [userId], references: [id])
   userId          String
   amount          Float
   isPaid          Boolean       @default(false)
-  status          OrderStatus    @default(awaiting_shipment)
+  status          OrderStatus   @default(awaiting_shipment)
 
   shippingAddress   ShippingAddress? @relation(fields: [shippingAddressId], references: [id])
   shippingAddressId String?
@@ -76,7 +76,7 @@ model Order {
   billingAddressId  String?
 
   createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  updated   DateTime @updatedAt
 }
 
 model ShippingAddress {
