@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { Suspense } from 'react'
+import ThankYou from './ThankYou'
 
 const page = () => {
   return (
-    <div>page</div>
+    <Suspense>
+      <ThankYou/>
+    </Suspense>
   )
 }
 
